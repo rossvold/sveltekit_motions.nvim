@@ -36,7 +36,18 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 {
     "TheIbraDev/frontend-movements.nvim",
     config = function()
-        require("frontend-movements").setup()
+        require("frontend-movements").setup({
+            require("sveltekit-movements").setup({
+                -- Jump to spesific file
+                page_keymap = '<Leader>sc',  -- Jump to +page.svelte
+                server_keymap = '<Leader>ss', -- Jump to +page.server.ts
+                layout_keymap = '<leader>sl', -- Jump to nearest layout file
+                hooks_keymap = '<leader>sh', -- Jump to nearest hooks file
+                -- Toggles
+                toggle_keymap = '<Leader>sa',  -- Alternate between page/server
+            })
+
+        })
     end
 }
 ```
