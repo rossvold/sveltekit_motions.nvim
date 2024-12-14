@@ -33,21 +33,10 @@ Telescope & harpoon doesn't really solve this because this is depenent on the fi
 Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-{
+return {
     "TheIbraDev/frontend-movements.nvim",
     config = function()
-        require("frontend-movements").setup({
-            require("sveltekit-movements").setup({
-                -- Jump to spesific file
-                page_keymap = '<Leader>sc',  -- Jump to +page.svelte
-                server_keymap = '<Leader>ss', -- Jump to +page.server.ts
-                layout_keymap = '<leader>sl', -- Jump to nearest layout file
-                hooks_keymap = '<leader>sh', -- Jump to nearest hooks file
-                -- Toggles
-                toggle_keymap = '<Leader>sa',  -- Alternate between page/server
-            })
-
-        })
+            require("sveltekit-movements").setup()
     end
 }
 ```
@@ -66,18 +55,16 @@ Default keymaps:
 The plugin can be configured through the setup function. The default configuration is:
 
 ```lua
-{
-    "yourusername/frontend w-movements.nvim",
-    config = function()
-        require("frontend w-movements").setup({
-            -- Toggle between +page.svelte and +page.server.ts
-            toggle_keymap = '<leader>st',
-
-            -- Jump to nearest parent +layout.svelte
-            layout_keymap = '<leader>sl',
-        })
-    end
-}
+require("sveltekit-movements").setup({
+    -- default keybinds
+    -- Jump to spesific file
+    page_keymap = '<Leader>sc',  -- Jump to +page.svelte
+    server_keymap = '<Leader>ss', -- Jump to +page.server.ts
+    layout_keymap = '<leader>sl', -- Jump to nearest layout file
+    hooks_keymap = '<leader>sh', -- Jump to nearest hooks file
+    -- Toggles
+    toggle_keymap = '<Leader>sa',  -- Alternate between page/server
+})
 ```
 
 You can customize these keybindings to your preference by modifying the keymap values.
