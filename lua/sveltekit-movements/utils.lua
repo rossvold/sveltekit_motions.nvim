@@ -1,4 +1,8 @@
 -- Helper functions
+-- TODO: make a helper function to identify what framework you are.
+-- Prob have to analyze the contents of package.json and check if react/next/svelte/sveltekit is present.
+--
+-- Probably will have some issues if you have a repo with both kek
 
 local M = {}
 
