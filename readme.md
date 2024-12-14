@@ -6,6 +6,7 @@ This plugin provides specific movements for frontend navigation patterns.
 
 ## Currently supported
 [x] - Sveltekit
+[] - Next.Next.js
 
 ## TODO:
 Add support for frameworks with simular file structures
