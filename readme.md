@@ -55,8 +55,11 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 ## Usage
 
 Default keymaps:
-- `<leader>st` - Toggle between `+page.svelte` and `+page.server.ts`
+- `<leader>sc` - Jump to nearest parent `+layout.svelte`
+- `<leader>ss` - Jump to `+page.server.ts/js`
 - `<leader>sl` - Jump to nearest parent `+layout.svelte`
+- `<leader>sh` - Jump to nearest parent `+hooks.server.ts`
+- `<leader>sa` - Toggle between `+page.svelte` and `+page.server.ts`
 
 ## Configuration
 
