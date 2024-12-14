@@ -7,11 +7,11 @@ function M.setup(opts)
 	opts = opts or {}
 
 	-- Default keymaps
-	local page_keymap = opts.page_keymap or "<leader>find key" -- go to page
-	local server_keymap = opts.server_keymap or "<leader>find key" -- go to server
-	local alt_keymap = opts.alt_keymap or "<leader>find key" -- alternate between files
-	local layout_keymap = opts.layout_keymap or "<leader>find key" -- go to layout
-	local hooks_keymap = opts.hooks_keymap or "<leader>find key" -- go to hooks
+	local page_keymap = opts.page_keymap or "<leader>sc" -- go to client
+	local server_keymap = opts.server_keymap or "<leader>ss" -- go to server
+	local layout_keymap = opts.layout_keymap or "<leader>sl" -- go to layout
+	local hooks_keymap = opts.hooks_keymap or "<leader>sh" -- go to hooks
+	local alt_keymap = opts.alt_keymap or "<leader>sa" -- alternate between files
 
 	vim.keymap.set("n", page_keymap, movements.jump_to_client, {
 		desc = "Jump to +page.svelte",
