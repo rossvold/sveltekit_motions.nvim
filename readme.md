@@ -9,7 +9,10 @@ This plugin provides specific movements for frontend navigation patterns.
 - [ ] Next.Next.js
 
 ## TODO:
-Add support for frameworks with simular file structures
+Add support for frameworks with simular type of navigation, like next.js approuter.
+- [] Add navigation to error file
+- [] Add toggle for hooks files
+- [] Add toggle for layout files
 - [] Next.js app router
 
 ## Motivation

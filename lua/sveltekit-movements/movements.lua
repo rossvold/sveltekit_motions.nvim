@@ -65,4 +65,23 @@ function M.jump_to_layout()
 	vim.notify("No layout file found in parent directories", vim.log.levels.WARN)
 end
 
+function M.jump_to_hooks()
+	local current_file = utils.get_current_file()
+	local current_dir = vim.fn.fnamemodify(current_file, ":h")
+
+	local in_hooks = current_file:match("+hooks%.svelte$")
+
+	while current_dir ~= "/" do
+		local hooks_file = current_dir .. "/hooks.server.ts"
+
+		if utils.file_exists(hooks_file) and (not in_hooks or hooks_file ~= current_file) then
+			vim.cmd("edit " .. hooks_file)
+			return
+		end
+		current_dir = vim.fn.fnamemodify(current_dir, ":h")
+	end
+
+	vim.notify("No hooks file found in parent directories", vim.log.levels.WARN)
+end
+
 return M

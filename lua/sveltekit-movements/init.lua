@@ -9,8 +9,9 @@ function M.setup(opts)
 	-- Default keymaps
 	local page_keymap = opts.page_keymap or "<leader>find key" -- go to page
 	local server_keymap = opts.server_keymap or "<leader>find key" -- go to server
-	local layout_keymap = opts.layout_keymap or "<leader>find key" -- go to layout
 	local alt_keymap = opts.alt_keymap or "<leader>find key" -- alternate between files
+	local layout_keymap = opts.layout_keymap or "<leader>find key" -- go to layout
+	local hooks_keymap = opts.hooks_keymap or "<leader>find key" -- go to hooks
 
 	vim.keymap.set("n", page_keymap, movements.jump_to_client, {
 		desc = "Jump to +page.svelte",
@@ -29,6 +30,11 @@ function M.setup(opts)
 
 	vim.keymap.set("n", layout_keymap, movements.jump_to_layout, {
 		desc = "Jump to nearest +layout.svelte",
+		silent = true,
+	})
+
+	vim.keymap.set("n", hooks_keymap, movements.jump_to_hooks, {
+		desc = "Jump to nearest +hooks.svelte",
 		silent = true,
 	})
 end
