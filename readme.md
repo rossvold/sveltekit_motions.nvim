@@ -5,12 +5,12 @@ A Neovim plugin for more efficient navigation in framework projects.
 This plugin provides specific movements for frontend navigation patterns.
 
 ## Currently supported
-[x] - Sveltekit
-[] - Next.Next.js
+- [x] Sveltekit
+- [ ] Next.Next.js
 
 ## TODO:
 Add support for frameworks with simular file structures
-[] - Next.js app router
+- [] Next.js app router
 
 ## Motivation
 
