@@ -34,7 +34,7 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 return {
-    "TheIbraDev/frontend-movements.nvim",
+    "rossvold/frontend-movements.nvim",
     config = function()
             require("sveltekit-movements").setup()
     end
