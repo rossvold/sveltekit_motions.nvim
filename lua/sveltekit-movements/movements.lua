@@ -41,8 +41,8 @@ function M.jump_to_server()
 			return
 		end
 	end
+	vim.notify("1. Could not find a match")
 end
-	vim.notify("Could not find a match")
 
 function M.toggle_page_files()
 	local current_file = utils.current_file()
@@ -94,7 +94,7 @@ function M.jump_to_layout()
 		index_start = 1
 		current_dir = vim.fn.fnamemodify(current_dir, ":h") -- Jump up one directory
 	end
-	vim.notify("Could not find a match")
+	vim.notify("2. Could not find a match")
 end
 
 function M.jump_to_hooks()
@@ -124,7 +124,7 @@ function M.jump_to_hooks()
 		index_start = 1
 		current_dir = vim.fn.fnamemodify(current_dir, ":h") -- Jump up one directory
 	end
-	vim.notify("Could not find a match")
+	vim.notify("3. Could not find a match")
 end
 
 function M.jump_to_error()
@@ -154,7 +154,7 @@ local current_dir = utils.current_dir()
 		index_start = 1
 		current_dir = vim.fn.fnamemodify(current_dir, ":h") -- Jump up one directory
 	end
-	vim.notify("Could not find a match")
+	vim.notify("4. Could not find a match")
 end
 
 return M
