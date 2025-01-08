@@ -22,8 +22,8 @@ end
 function M.jump_to_server()
 	local current_dir = utils.current_dir()
 	local server_pattern = patterns.server_pattern()
-	local index_start = 1
 
+	local index_start = 1
 	local current_file = utils.current_file() -- NOTE: this has to be used to offset the index
 	for index = 1, #server_pattern do
 		if current_file == server_pattern[index] then
@@ -32,9 +32,10 @@ function M.jump_to_server()
 		end
 	end
 
+	local abs_path = utils.absolute_path()
 	for index = index_start, #server_pattern do
 		local server_path = current_dir .. "/" .. server_pattern[index]
-		local same_path = utils.absolute_path() == server_path
+		local same_path = abs_path == server_path
 		if utils.file_exists(server_path) and not same_path then
 			vim.cmd("edit " .. server_path)
 			vim.notify(server_path)
@@ -80,10 +81,11 @@ function M.jump_to_layout()
 		end
 	end
 
+	local abs_path = utils.absolute_path()
 	while working_directory ~= current_dir do -- Test towards working directory
 		for index = index_start, #layout_pattern do
 			local layout_path = current_dir .. "/" .. layout_pattern[index]
-			local same_path = utils.absolute_path() == layout_path
+			local same_path = abs_path == layout_path
 			if utils.file_exists(layout_path) and not same_path then
 				vim.cmd("edit " .. layout_path)
 				vim.notify(layout_path)
@@ -110,10 +112,11 @@ function M.jump_to_hooks()
 		end
 	end
 
+	local abs_path = utils.absolute_path()
 	while working_directory ~= current_dir do -- Test towards working directory
 		for index = index_start, #hook_pattern do
 			local hook_path = current_dir .. "/" .. hook_pattern[index]
-			local same_path = utils.absolute_path() == hook_path
+			local same_path = abs_path == hook_path
 			if utils.file_exists(hook_path) and not same_path then
 				vim.cmd("edit " .. hook_path)
 				vim.notify(hook_path)
@@ -140,10 +143,11 @@ local current_dir = utils.current_dir()
 		end
 	end
 
+	local abs_path = utils.absolute_path()
 	while working_directory ~= current_dir do -- Test towards working directory
 		for index = index_start, #error_pattern do
 			local error_path = current_dir .. "/" .. error_pattern[index]
-			local same_path = utils.absolute_path() == error_path
+			local same_path = abs_path == error_path
 			if utils.file_exists(error_path) and not same_path then
 				vim.cmd("edit " .. error_path)
 				vim.notify(error_path)
