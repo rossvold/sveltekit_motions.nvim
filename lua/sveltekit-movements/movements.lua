@@ -82,7 +82,8 @@ function M.jump_to_layout()
 	end
 
 	local abs_path = utils.absolute_path()
-	while working_directory ~= current_dir do -- Test towards working directory
+	local cycle_count = 0
+	while working_directory ~= current_dir and cycle_count < 50 do -- Test towards working directory
 		for index = index_start, #layout_pattern do
 			local layout_path = current_dir .. "/" .. layout_pattern[index]
 			local same_path = abs_path == layout_path
@@ -95,11 +96,13 @@ function M.jump_to_layout()
 		-- After first loop, remove index offset.
 		index_start = 1
 		current_dir = vim.fn.fnamemodify(current_dir, ":h") -- Jump up one directory
+		cycle_count = cycle_count + 1
 	end
 	vim.notify("2. Could not find a match")
 end
 
 function M.jump_to_hooks()
+	vim.notify("jump to hook")
 	local current_dir = utils.current_dir()
 	local working_directory = utils.working_directory()
 	local hook_pattern = patterns.hook_pattern()
@@ -113,7 +116,8 @@ function M.jump_to_hooks()
 	end
 
 	local abs_path = utils.absolute_path()
-	while working_directory ~= current_dir do -- Test towards working directory
+	local cycle_count = 0
+	while working_directory ~= current_dir and cycle_count < 50 do -- Test towards working directory
 		for index = index_start, #hook_pattern do
 			local hook_path = current_dir .. "/" .. hook_pattern[index]
 			local same_path = abs_path == hook_path
@@ -126,12 +130,13 @@ function M.jump_to_hooks()
 		-- After first loop, remove index offset.
 		index_start = 1
 		current_dir = vim.fn.fnamemodify(current_dir, ":h") -- Jump up one directory
+		cycle_count = cycle_count + 1
 	end
 	vim.notify("3. Could not find a match")
 end
 
 function M.jump_to_error()
-local current_dir = utils.current_dir()
+	local current_dir = utils.current_dir()
 	local working_directory = utils.working_directory()
 	local error_pattern = patterns.error_pattern()
 	local index_start = 1
@@ -144,7 +149,8 @@ local current_dir = utils.current_dir()
 	end
 
 	local abs_path = utils.absolute_path()
-	while working_directory ~= current_dir do -- Test towards working directory
+	local cycle_count = 0
+	while working_directory ~= current_dir and cycle_count < 50 do -- Test towards working directory
 		for index = index_start, #error_pattern do
 			local error_path = current_dir .. "/" .. error_pattern[index]
 			local same_path = abs_path == error_path
@@ -157,6 +163,7 @@ local current_dir = utils.current_dir()
 		-- After first loop, remove index offset.
 		index_start = 1
 		current_dir = vim.fn.fnamemodify(current_dir, ":h") -- Jump up one directory
+		cycle_count = cycle_count + 1
 	end
 	vim.notify("4. Could not find a match")
 end
