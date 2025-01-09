@@ -5,7 +5,13 @@ function M.working_directory()
 end
 
 function M.absolute_path()
-	return vim.fn.expand("%:p")
+	local path = vim.fn.expand("%:p")
+
+	if path:match("^oil:///") then
+		path:gsub("^oil:///", "")
+	end
+
+	return path
 end
 
 function M.current_file()
