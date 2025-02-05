@@ -11,7 +11,6 @@ function M.jump_to_client()
 	for index = index_start, #pattern do
 		local path_client = current_dir .. pattern[index]
 		if utils.file_exists(path_client) then
-			vim.notify("Edit current buffer activated")
 			vim.cmd("edit " .. path_client)
 		else
 			vim.notify("No +page.svelte found in current directory", vim.log.levels.WARN)
@@ -38,7 +37,6 @@ function M.jump_to_server()
 		local same_path = abs_path == server_path
 		if utils.file_exists(server_path) and not same_path then
 			vim.cmd("edit " .. server_path)
-			vim.notify(server_path)
 			return
 		end
 	end
@@ -89,7 +87,6 @@ function M.jump_to_layout()
 			local same_path = abs_path == layout_path
 			if utils.file_exists(layout_path) and not same_path then
 				vim.cmd("edit " .. layout_path)
-				vim.notify(layout_path)
 				return
 			end
 		end
@@ -102,7 +99,6 @@ function M.jump_to_layout()
 end
 
 function M.jump_to_hooks()
-	vim.notify("jump to hook")
 	local current_dir = utils.current_dir()
 	local working_directory = utils.working_directory()
 	local hook_pattern = patterns.hook_pattern()
@@ -123,7 +119,6 @@ function M.jump_to_hooks()
 			local same_path = abs_path == hook_path
 			if utils.file_exists(hook_path) and not same_path then
 				vim.cmd("edit " .. hook_path)
-				vim.notify(hook_path)
 				return
 			end
 		end
@@ -156,7 +151,6 @@ function M.jump_to_error()
 			local same_path = abs_path == error_path
 			if utils.file_exists(error_path) and not same_path then
 				vim.cmd("edit " .. error_path)
-				vim.notify(error_path)
 				return
 			end
 		end
@@ -168,4 +162,7 @@ function M.jump_to_error()
 	vim.notify("4. Could not find a match")
 end
 
+function M.jump_to_components()
+	--TODO: setup a jump to component function
+end
 return M
